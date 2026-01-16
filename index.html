@@ -22,11 +22,10 @@
             color: white;
             font-family: var(--font-main);
             overflow-x: hidden;
-            /* Tạo texture hạt (noise) cho toàn bộ trang */
             background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
         }
 
-        /* --- BACKGROUND DECORATION --- */
+        /* --- BACKGROUND DECORATION (Layout sau) --- */
         .vivid-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -36,7 +35,6 @@
                 radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.15) 0%, transparent 40%);
         }
 
-        /* Graffiti trang trí */
         .graffiti-note {
             font-family: var(--font-hand);
             position: absolute;
@@ -50,23 +48,27 @@
         /* --- REUSABLE: TORN PAPER EFFECT --- */
         .torn-divider {
             width: 100%;
-            height: 50px;
-            background-color: var(--bg-dark);
+            height: 60px;
+            background-color: #0d0d11; /* Màu của section About tiếp theo */
             clip-path: polygon(0% 0%, 5% 40%, 10% 10%, 15% 50%, 20% 20%, 25% 60%, 30% 30%, 35% 70%, 40% 40%, 45% 80%, 50% 50%, 55% 90%, 60% 60%, 65% 100%, 70% 70%, 75% 90%, 80% 60%, 85% 80%, 90% 50%, 95% 70%, 100% 40%, 100% 100%, 0% 100%);
-            margin-top: -49px;
+            margin-top: -59px;
             position: relative;
             z-index: 10;
         }
 
-        /* --- SECTION 1: HERO (Mềm mại & Bay bổng) --- */
+        /* --- SECTION 1: HERO (Cập nhật ảnh nền của bạn) --- */
         #hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(157, 80, 187, 0.2), transparent);
+            text-align: center;
             position: relative;
+            /* Thay thế bằng tên file ảnh graffiti bạn đã cung cấp */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
+                        url('Gemini_Generated_Image_vbut0fvbut0fvbut.png') no-repeat center center;
+            background-size: cover;
         }
 
         #hero h1 {
@@ -78,33 +80,32 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
+            z-index: 2;
         }
 
         .hero-name {
             font-family: var(--font-hand);
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--neon-pink);
-            margin-top: -20px;
-            text-shadow: 2px 2px 10px rgba(255, 0, 127, 0.5);
+            margin-top: -10px;
+            text-shadow: 2px 2px 15px rgba(255, 0, 127, 0.8);
+            z-index: 2;
         }
 
-        /* --- SECTION 2: ABOUT ME (Layout mềm hơn) --- */
+        /* --- SECTION 2: ABOUT ME --- */
         #about {
-            padding: 100px 10%;
+            padding: 120px 10%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
             background: #0d0d11;
-        }
-
-        .about-img-container {
             position: relative;
         }
 
         .about-img-container img {
             width: 100%;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Bo góc mềm mại kiểu giọt nước */
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             border: 4px solid var(--neon-cyan);
             box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
         }
@@ -122,7 +123,7 @@
             font-weight: 300;
         }
 
-        /* --- SECTION 3: PROJECTS (Vivid Grid) --- */
+        /* --- SECTION 3: PROJECTS --- */
         #projects {
             padding: 100px 5%;
             background-color: var(--bg-dark);
@@ -156,8 +157,6 @@
             transition: 0.5s;
         }
 
-        .project-card:hover img { filter: saturate(2) brightness(1); }
-
         .project-title {
             position: absolute;
             bottom: 20px; left: 20px;
@@ -168,13 +167,6 @@
             padding: 5px 15px;
             border-radius: 10px;
         }
-
-        /* Modal & Các thành phần khác giữ nguyên logic cũ nhưng cập nhật style mềm mại */
-        .modal-content {
-            border-radius: 20px;
-            border: 3px solid var(--neon-cyan);
-            background: linear-gradient(135deg, #121214 0%, #050505 100%);
-        }
     </style>
 </head>
 <body>
@@ -182,19 +174,16 @@
     <div class="vivid-bg"></div>
 
     <section id="hero">
-        <div class="graffiti-note" style="top: 20%; left: 15%;">Who are you?</div>
-        <div class="graffiti-note" style="bottom: 25%; right: 10%; color: var(--neon-pink);">HA HA HA!</div>
-        
         <h1 data-text="PORTFOLIO">PORTFOLIO</h1>
         <div class="hero-name">Vũ Trần Khánh Linh</div>
-        <p style="letter-spacing: 5px; margin-top: 15px; opacity: 0.7;">EVENT PLANNER • CREATIVE DIRECTOR</p>
+        <p style="letter-spacing: 5px; margin-top: 15px; opacity: 0.9; font-weight: 500; text-shadow: 0 2px 4px black;">EVENT PLANNER • CREATIVE DIRECTOR</p>
     </section>
 
     <div class="torn-divider"></div>
 
     <section id="about">
         <div class="about-img-container">
-            <img src="https://via.placeholder.com/600x700/111/00e5ff?text=Khánh+Linh+Art" alt="Profile">
+            <img src="https://via.placeholder.com/600x700/111/00e5ff?text=Khánh+Linh+Art" alt="Profile">
             <div class="graffiti-note" style="bottom: -20px; right: -20px; transform: rotate(10deg);">The Monster...</div>
         </div>
         <div class="about-text">
@@ -220,7 +209,7 @@
                 <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=600&q=80">
                 <div class="project-title">Dark Gallery</div>
             </div>
-            </div>
+        </div>
     </section>
 
 </body>
