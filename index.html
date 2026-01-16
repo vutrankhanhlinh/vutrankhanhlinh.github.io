@@ -4,224 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vũ Trần Khánh Linh | Creative Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@1,700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-dark: #0a0a0c;
-            --neon-purple: #9d50bb;
-            --neon-pink: #ff007f;
-            --neon-cyan: #00e5ff;
-            --font-main: 'Montserrat', sans-serif;
-            --font-hand: 'Caveat', cursive;
+            /* Màu sắc lấy từ hình ảnh gradient bạn cung cấp */
+            --gradient-top: #050505;
+            --gradient-mid: #3a0078;
+            --gradient-bottom: #00d2ff;
+            --neon-pink: #ff00ff;
+            --text-white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-dark);
-            color: white;
-            font-family: var(--font-main);
+            background-color: #000;
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            /* Tạo texture hạt (noise) cho toàn bộ trang */
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
         }
 
-        /* --- BACKGROUND DECORATION --- */
-        .vivid-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 80% 20%, rgba(255, 0, 127, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.15) 0%, transparent 40%);
-        }
-
-        /* Graffiti trang trí */
-        .graffiti-note {
-            font-family: var(--font-hand);
-            position: absolute;
-            color: var(--neon-cyan);
-            font-size: 2rem;
-            opacity: 0.6;
-            transform: rotate(-15deg);
-            pointer-events: none;
-        }
-
-        /* --- REUSABLE: TORN PAPER EFFECT --- */
-        .torn-divider {
-            width: 100%;
-            height: 50px;
-            background-color: var(--bg-dark);
-            clip-path: polygon(0% 0%, 5% 40%, 10% 10%, 15% 50%, 20% 20%, 25% 60%, 30% 30%, 35% 70%, 40% 40%, 45% 80%, 50% 50%, 55% 90%, 60% 60%, 65% 100%, 70% 70%, 75% 90%, 80% 60%, 85% 80%, 90% 50%, 95% 70%, 100% 40%, 100% 100%, 0% 100%);
-            margin-top: -49px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* --- SECTION 1: HERO (Mềm mại & Bay bổng) --- */
+        /* --- SECTION 1: HERO (NỀN ẢNH RIÊNG) --- */
         #hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(157, 80, 187, 0.2), transparent);
+            text-align: center;
             position: relative;
+            /* THAY ẢNH CỦA BẠN VÀO ĐÂY */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
         }
 
         #hero h1 {
-            font-size: clamp(4rem, 12vw, 8rem);
-            font-weight: 700;
-            letter-spacing: 10px;
+            /* Font Bolero-esque cổ điển & nghệ thuật */
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(4rem, 15vw, 10rem);
             margin-bottom: 0;
-            background: linear-gradient(to right, #fff, var(--neon-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
         .hero-name {
-            font-family: var(--font-hand);
-            font-size: 3rem;
+            /* Font mềm mại cho tên riêng */
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
             color: var(--neon-pink);
             margin-top: -20px;
-            text-shadow: 2px 2px 10px rgba(255, 0, 127, 0.5);
+            filter: drop-shadow(0 0 10px var(--neon-pink));
         }
 
-        /* --- SECTION 2: ABOUT ME (Layout mềm hơn) --- */
-        #about {
-            padding: 100px 10%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            background: #0d0d11;
-        }
-
-        .about-img-container {
+        /* --- LAYOUT GRADIENT NEON (DÙNG CHO CÁC PHẦN CÒN LẠI) --- */
+        .neon-layout {
             position: relative;
+            background: linear-gradient(180deg, 
+                var(--gradient-top) 0%, 
+                var(--gradient-mid) 40%, 
+                var(--gradient-bottom) 100%);
+            padding: 100px 10%;
+            min-height: 100vh;
         }
 
-        .about-img-container img {
-            width: 100%;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Bo góc mềm mại kiểu giọt nước */
-            border: 4px solid var(--neon-cyan);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+        /* Hiệu ứng hạt Noise để ảnh nền sinh động hơn */
+        .neon-layout::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.2;
+            pointer-events: none;
         }
 
-        .about-text h2 {
+        /* --- TYPOGRAPHY VIỆT HÓA --- */
+        .section-title {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-weight: 700;
             font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--neon-purple);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+        }
+
+        /* --- CÁC PHẦN NỘI DUNG --- */
+        #about {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            border: 2px solid white;
+            padding: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
         }
 
         .about-text p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.8;
-            color: #d1d1d1;
-            font-weight: 300;
+            color: #efefef;
         }
 
-        /* --- SECTION 3: PROJECTS (Vivid Grid) --- */
         #projects {
-            padding: 100px 5%;
-            background-color: var(--bg-dark);
+            text-align: center;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
         }
 
         .project-card {
-            position: relative;
+            background: rgba(255, 255, 255, 0.05);
             height: 350px;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            backdrop-filter: blur(5px);
         }
 
         .project-card:hover {
-            transform: translateY(-10px) rotate(2deg);
             border-color: var(--neon-pink);
-            box-shadow: 0 10px 40px rgba(255, 0, 127, 0.3);
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.2);
         }
 
-        .project-card img {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: saturate(1.5) brightness(0.7);
-            transition: 0.5s;
+        /* --- TORN PAPER EFFECT (DẤU ẤN ARCANE) --- */
+        .divider {
+            height: 80px;
+            background: var(--gradient-top);
+            clip-path: polygon(0% 0%, 15% 50%, 30% 0%, 45% 60%, 60% 10%, 75% 80%, 90% 20%, 100% 100%, 0% 100%);
+            margin-top: -79px;
+            position: relative;
+            z-index: 5;
         }
 
-        .project-card:hover img { filter: saturate(2) brightness(1); }
-
-        .project-title {
-            position: absolute;
-            bottom: 20px; left: 20px;
-            font-family: var(--font-hand);
-            font-size: 1.8rem;
-            color: white;
-            background: rgba(0,0,0,0.6);
-            padding: 5px 15px;
-            border-radius: 10px;
-        }
-
-        /* Modal & Các thành phần khác giữ nguyên logic cũ nhưng cập nhật style mềm mại */
-        .modal-content {
-            border-radius: 20px;
-            border: 3px solid var(--neon-cyan);
-            background: linear-gradient(135deg, #121214 0%, #050505 100%);
-        }
     </style>
 </head>
 <body>
 
-    <div class="vivid-bg"></div>
-
     <section id="hero">
-        <div class="graffiti-note" style="top: 20%; left: 15%;">Who are you?</div>
-        <div class="graffiti-note" style="bottom: 25%; right: 10%; color: var(--neon-pink);">HA HA HA!</div>
-        
-        <h1 data-text="PORTFOLIO">PORTFOLIO</h1>
+        <h1>Portfolio</h1>
         <div class="hero-name">Vũ Trần Khánh Linh</div>
-        <p style="letter-spacing: 5px; margin-top: 15px; opacity: 0.7;">EVENT PLANNER • CREATIVE DIRECTOR</p>
+        <p style="letter-spacing: 6px; margin-top: 20px; font-weight: 300;">EVENT PLANNER & CREATIVE</p>
     </section>
 
-    <div class="torn-divider"></div>
+    <div class="divider"></div>
 
-    <section id="about">
-        <div class="about-img-container">
-            <img src="https://via.placeholder.com/600x700/111/00e5ff?text=Khánh+Linh+Art" alt="Profile">
-            <div class="graffiti-note" style="bottom: -20px; right: -20px; transform: rotate(10deg);">The Monster...</div>
-        </div>
-        <div class="about-text">
-            <h2>ABOUT ME</h2>
-            <p>Chào bạn, tôi là Khánh Linh. Một tâm hồn nghệ thuật luôn tìm kiếm sự cân bằng giữa sự hỗn loạn của Cyberpunk và vẻ đẹp mềm mại của cảm xúc.</p>
-            <p style="margin-top: 20px;">Với hơn 5 năm kinh nghiệm trong ngành Event, tôi không chỉ tổ chức sự kiện, tôi kiến tạo những trải nghiệm thị giác sống động, nơi ánh sáng neon và âm thanh hòa quyện làm một.</p>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 50px; font-family: var(--font-hand); color: var(--neon-cyan);">My Creative Works</h2>
+    <div class="neon-layout">
         
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80">
-                <div class="project-title">Cyber Wedding 2026</div>
+        <section id="about">
+            <div class="about-content">
+                <img src="https://via.placeholder.com/500x650/111/fff?text=Photo+Profile" class="about-img" alt="Linh Photo">
             </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1514525253344-af6bd60eb67d?auto=format&fit=crop&w=600&q=80">
-                <div class="project-title">Neon Music Fest</div>
+            <div class="about-text">
+                <h2 class="section-title">ABOUT ME</h2>
+                <p>Tôi tin rằng mỗi sự kiện là một bản giao hưởng giữa ánh sáng và cảm xúc. Với nền tảng của một Event Planner, tôi không chỉ xây dựng kịch bản, tôi kiến tạo những không gian mà ở đó, mỗi vị khách đều trở thành nhân vật chính trong một thế giới đầy màu sắc.</p>
+                <br>
+                <p>Phong cách của tôi là sự giao thoa giữa nét cổ điển và hơi thở tương lai.</p>
             </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=600&q=80">
-                <div class="project-title">Dark Gallery</div>
+        </section>
+
+        <hr style="margin: 100px 0; opacity: 0.1;">
+
+        <section id="projects">
+            <h2 class="section-title">CÁC DỰ ÁN</h2>
+            <div class="project-grid">
+                <div class="project-card"><p style="margin-top:160px">Project 01</p></div>
+                <div class="project-card"><p style="margin-top:160px">Project 02</p></div>
+                <div class="project-card"><p style="margin-top:160px">Project 03</p></div>
+                <div class="project-card"><p style="margin-top:160px">Project 04</p></div>
             </div>
-            </div>
-    </section>
+        </section>
+
+    </div>
 
 </body>
 </html>
